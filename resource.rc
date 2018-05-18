@@ -1,4 +1,4 @@
-// Microsoft Visual C++ generated resource script.
+//Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
 
@@ -13,10 +13,13 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// English (U.S.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -24,18 +27,18 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE 
+1 TEXTINCLUDE MOVEABLE PURE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE 
+2 TEXTINCLUDE MOVEABLE PURE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE 
+3 TEXTINCLUDE MOVEABLE PURE 
 BEGIN
     "\r\n"
     "\0"
@@ -50,16 +53,23 @@ END
 //
 
 IDD_MAIN DIALOGEX 0, 0, 383, 230
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+STYLE DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_CAPTION | 
+    WS_SYSMENU
 EXSTYLE WS_EX_OVERLAPPEDWINDOW | WS_EX_CONTROLPARENT | WS_EX_APPWINDOW
 CAPTION "Auto DLL Injector - by Sharky767"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
+FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "",IDC_PROCLIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,2,12,188,111
-    CONTROL         "",IDC_LIBLIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,193,12,188,88
+    CONTROL         "",IDC_PROCLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,2,12,188,111
+    CONTROL         "",IDC_LIBLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,193,12,188,88
     LTEXT           "Target Processes",IDC_STATIC,2,3,56,8
     LTEXT           "List of libraries to inject",IDC_STATIC,194,3,75,8
-    CONTROL         "Inject upon process startup",IDC_STARTCHECK,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,193,101,107,10
+    CONTROL         "Inject upon process startup",IDC_STARTCHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,193,101,107,
+                    10
     EDITTEXT        IDC_PROCEDIT,2,124,159,12,ES_AUTOHSCROLL
     PUSHBUTTON      "+",IDC_PROCADD,176,124,14,12
     PUSHBUTTON      "...",IDC_LIBBROWSE,353,124,14,12
@@ -67,8 +77,10 @@ BEGIN
     EDITTEXT        IDC_LIBEDIT,193,124,159,12,ES_AUTOHSCROLL
     PUSHBUTTON      "...",IDC_PROCBROWSE,162,124,14,12
     PUSHBUTTON      "Inject",IDC_INJECTNOW,192,110,189,13,WS_DISABLED
-    EDITTEXT        IDC_CONSOLE,2,148,379,81,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
-    LTEXT           "-------------------------------------------------------------------Console-----------------------------------------------------------------",IDC_STATIC,2,139,379,8
+    EDITTEXT        IDC_CONSOLE,2,148,379,81,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    LTEXT           "-------------------------------------------------------------------Console-----------------------------------------------------------------",
+                    IDC_STATIC,2,139,379,8
 END
 
 
@@ -78,7 +90,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO MOVEABLE PURE 
 BEGIN
     IDD_MAIN, DIALOG
     BEGIN
@@ -98,8 +110,8 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAIN                ICON                    "appico.ico"
-#endif    // English (United States) resources
+IDI_MAIN                ICON    DISCARDABLE     "appico.ico"
+#endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

@@ -49,3 +49,5 @@ Temporary Items
 *.plg
 *.opt
 *.aps
+Debug
+Release

@@ -689,24 +689,38 @@ void InjectModules(HANDLE hProcess, DWORD dwProcessID, CProcess* pProc)
 
 				LPVOID pLoadLibrary = (LPVOID)GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
 				LPVOID pMem = (LPVOID)VirtualAllocEx(hProcess, NULL, strlen(ptr)+1, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-
-				WriteProcessMemory(hProcess, pMem, ptr, strlen(ptr)+1, NULL);
-
-				HANDLE hThread = NULL;
-
-				if((hThread=CreateRemoteThread(hProcess, NULL, NULL, (LPTHREAD_START_ROUTINE)pLoadLibrary, pMem, NULL, NULL)) == NULL)
-				{
-					sprintf(szAppend, "Injection failed - CreateRemoteThread() exited with error code %d\r\n", GetLastError());
+                if(pMem == NULL)
+                {
+                    sprintf(szAppend, "VirtualAllocEx failed - Error code %d\r\n", GetLastError());
 					AppendConsole(szAppend);
-				}
-				else
-				{
-					AppendConsole("Injection Success!\r\n");
-					WaitForSingleObject(hThread, INFINITE);
-				}
+                }
+                else
+                {
+                    BOOL ret = WriteProcessMemory(hProcess, pMem, ptr, strlen(ptr)+1, NULL);
 
+                    if(ret == FALSE)
+                    {
+                        sprintf(szAppend, "WriteProcessMemory failed - Error code %d\r\n", GetLastError());
+					    AppendConsole(szAppend);
+                    }
+                    else
+                    {
+                        HANDLE hThread = NULL;
+                        
+                        if((hThread = CreateRemoteThread(hProcess, NULL, NULL, (LPTHREAD_START_ROUTINE)pLoadLibrary, pMem, NULL, NULL)) == NULL)
+                        {
+                            sprintf(szAppend, "Injection failed - CreateRemoteThread() exited with error code %d\r\n", GetLastError());
+                            AppendConsole(szAppend);
+                        }
+                        else
+                        {
+                            AppendConsole("Injection Success!\r\n");
+                            WaitForSingleObject(hThread, INFINITE);
+                        }
+                    }
 
-				VirtualFreeEx(hProcess, pMem, 0, MEM_RELEASE);
+				    VirtualFreeEx(hProcess, pMem, 0, MEM_RELEASE);
+                }
 			}
 		}
 
